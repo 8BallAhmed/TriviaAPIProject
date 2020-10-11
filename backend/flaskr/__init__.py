@@ -64,8 +64,7 @@ def create_app(test_config=None):
             formattedQuestions.append(q.format())
         return jsonify({'success': True,
                         'questions': formattedQuestions,
-                        'total_questions': len(formattedQuestions)}),
-        200
+                        'total_questions': len(formattedQuestions)}),  200
 
     # CHECKED FOR SUCCESS AND FAILURE, DOCUMENTED
     @ app.route('/questions', methods=['POST'])
@@ -134,8 +133,7 @@ def create_app(test_config=None):
     @ app.route('/categories/<int:cat_id>/questions', methods=['GET'])
     def getQuestionsCat(cat_id):
         questions = Question.query.filter_by(category=(cat_id))
-        questionsJSON =
-        paginateCattedQuestions(questions, cat_id)
+        questionsJSON = paginateCattedQuestions(questions, cat_id)
         return questionsJSON
 
     # RELATED TO FRONT-END, CHECKED FOR SUCCESS AND FAILURE
